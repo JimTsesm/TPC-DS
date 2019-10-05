@@ -1,3 +1,4 @@
+--Clear tables----------------------------
 TRUNCATE TABLE call_center ;
 TRUNCATE TABLE catalog_page;
 TRUNCATE TABLE catalog_returns;
@@ -23,3 +24,11 @@ TRUNCATE TABLE web_page;
 TRUNCATE TABLE web_returns;
 TRUNCATE TABLE web_sales;
 TRUNCATE TABLE web_site;
+--------------------------------------------
+
+--Get count(*) for every table--------------
+SELECT schemaname,relname,n_live_tup 
+FROM pg_stat_user_tables 
+ORDER BY n_live_tup DESC;
+--------------------------------------------
+
