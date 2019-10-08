@@ -159,6 +159,6 @@
  or 
  store.currency_rank <= 10
  )
- )
+ ) as a
  order by 1,4,5,2
  [_LIMITC];
