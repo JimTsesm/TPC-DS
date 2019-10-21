@@ -1,4 +1,4 @@
-
+--1
 with customer_total_return as
 (select sr_customer_sk as ctr_customer_sk
 ,sr_store_sk as ctr_store_sk
@@ -23,7 +23,7 @@ order by c_customer_id
 limit 100;
 
 
-
+--2
 with wscs as
  (select sold_date_sk
         ,sales_price
@@ -83,7 +83,7 @@ with wscs as
  order by d_week_seq1;
 
 
-
+--3
 select  dt.d_year 
        ,item.i_brand_id brand_id 
        ,item.i_brand brand
@@ -104,7 +104,7 @@ select  dt.d_year
  limit 100;
 
 
-
+--4
 with year_total as (
  select c_customer_id customer_id
        ,c_first_name customer_first_name
@@ -220,7 +220,7 @@ union all
 limit 100;
 
 
-
+--5
 with ssr as
  (select s_store_id,
         sum(sales_price) as sales,
@@ -348,7 +348,7 @@ with ssr as
  limit 100;
 
 
-
+--6
 select  a.ca_state state, count(*) cnt
  from customer_address a
      ,customer c
@@ -374,7 +374,7 @@ select  a.ca_state state, count(*) cnt
  limit 100;
 
 
-
+--7
 select  i_item_id, 
         avg(ss_quantity) agg1,
         avg(ss_list_price) agg2,
@@ -395,7 +395,7 @@ select  i_item_id,
  limit 100;
 
 
-
+--8
 select  s_store_name
       ,sum(ss_net_profit)
  from store_sales
@@ -823,7 +823,7 @@ select  s_store_name
  limit 100;
 
 
-
+--9
 select case when (select count(*) 
                   from store_sales 
                   where ss_quantity between 1 and 20) > 74129
@@ -874,7 +874,7 @@ where r_reason_sk = 1
 ;
 
 
-
+--10
 select  
   cd_gender,
   cd_marital_status,
@@ -933,7 +933,7 @@ select
 limit 100;
 
 
-
+--11
 with year_total as (
  select c_customer_id customer_id
        ,c_first_name customer_first_name
@@ -1014,7 +1014,7 @@ with year_total as (
 limit 100;
 
 
-
+--12
 select  i_item_id
       ,i_item_desc 
       ,i_category 
@@ -1048,7 +1048,7 @@ order by
 limit 100;
 
 
-
+--13
 select avg(ss_quantity)
        ,avg(ss_ext_sales_price)
        ,avg(ss_ext_wholesale_cost)
@@ -1100,7 +1100,7 @@ select avg(ss_quantity)
 ;
 
 
-
+--14
 with  cross_items as
  (select i_item_sk ss_item_sk
  from item,
@@ -1310,7 +1310,7 @@ with  cross_items as
  limit 100;
 
 
-
+--15
 select  ca_zip
        ,sum(cs_sales_price)
  from catalog_sales
@@ -1330,7 +1330,7 @@ select  ca_zip
  limit 100;
 
 
-
+--16
 select  
    count(distinct cs_order_number) as "order count"
   ,sum(cs_ext_ship_cost) as "total shipping cost"
@@ -1361,7 +1361,7 @@ order by count(distinct cs_order_number)
 limit 100;
 
 
-
+--17
 select  i_item_id
        ,i_item_desc
        ,s_state
@@ -1406,7 +1406,7 @@ select  i_item_id
 limit 100;
 
 
-
+--18
 select  i_item_id,
         ca_country,
         ca_state, 
@@ -1440,7 +1440,7 @@ select  i_item_id,
  limit 100;
 
 
-
+--19
 select  i_brand_id brand_id, i_brand brand, i_manufact_id, i_manufact,
  	sum(ss_ext_sales_price) ext_price
  from date_dim, store_sales, item,customer,customer_address,store
@@ -1465,7 +1465,7 @@ select  i_brand_id brand_id, i_brand brand, i_manufact_id, i_manufact,
 limit 100 ;
 
 
-
+--20
 select  i_item_id
        ,i_item_desc 
        ,i_category 
@@ -1495,7 +1495,7 @@ select  i_item_id
 limit 100;
 
 
-
+--21
 select  *
  from(select w_warehouse_name
             ,i_item_id
@@ -1525,7 +1525,7 @@ select  *
  limit 100;
 
 
-
+--22
 select  i_product_name
              ,i_brand
              ,i_class
@@ -1545,7 +1545,7 @@ order by qoh, i_product_name, i_brand, i_class, i_category
 limit 100;
 
 
-
+--23
 with frequent_ss_items as 
  (select substr(i_item_desc,1,30) itemdesc,i_item_sk item_sk,d_date solddate,count(*) cnt
   from store_sales
@@ -1652,7 +1652,7 @@ with frequent_ss_items as
   limit 100;
 
 
-
+--24
 with ssales as
 (select c_last_name
       ,c_first_name
@@ -1759,7 +1759,7 @@ order by c_last_name
 ;
 
 
-
+--25
 select  
  i_item_id
  ,i_item_desc
@@ -1807,7 +1807,7 @@ select
  limit 100;
 
 
-
+--26
 select  i_item_id, 
         avg(cs_quantity) agg1,
         avg(cs_list_price) agg2,
@@ -1828,7 +1828,7 @@ select  i_item_id,
  limit 100;
 
 
-
+--27
 select  i_item_id,
         s_state, grouping(s_state) g_state,
         avg(ss_quantity) agg1,
@@ -1851,7 +1851,7 @@ select  i_item_id,
  limit 100;
 
 
-
+--28
 select  *
 from (select avg(ss_list_price) B1_LP
             ,count(ss_list_price) B1_CNT
@@ -1904,7 +1904,7 @@ from (select avg(ss_list_price) B1_LP
 limit 100;
 
 
-
+--29
 select   
      i_item_id
     ,i_item_desc
@@ -1951,7 +1951,7 @@ select
  limit 100;
 
 
-
+--30
 with customer_total_return as
  (select wr_returning_customer_sk as ctr_customer_sk
         ,ca_state as ctr_state, 
@@ -1982,7 +1982,7 @@ with customer_total_return as
 limit 100;
 
 
-
+--31
 with ss as
  (select ca_county,d_qoy, d_year,sum(ss_ext_sales_price) as store_sales
  from store_sales,date_dim,customer_address
@@ -2034,7 +2034,7 @@ with ss as
  order by ss1.ca_county;
 
 
-
+--32
 select  sum(cs_ext_discount_amt)  as "excess discount amount" 
 from 
    catalog_sales 
@@ -2062,7 +2062,7 @@ and cs_ext_discount_amt
 limit 100;
 
 
-
+--33
 with ss as (
  select
           i_manufact_id,sum(ss_ext_sales_price) total_sales
@@ -2137,7 +2137,7 @@ where i_category in ('Electronics'))
 limit 100;
 
 
-
+--34
 select c_last_name
        ,c_first_name
        ,c_salutation
@@ -2168,7 +2168,7 @@ select c_last_name
     order by c_last_name,c_first_name,c_salutation,c_preferred_cust_flag desc, ss_ticket_number;
 
 
-
+--35
 select   
   ca_state,
   cd_gender,
@@ -2226,7 +2226,7 @@ select
  limit 100;
 
 
-
+--36
 select * from( --new
   select  
     sum(ss_net_profit)/sum(ss_ext_sales_price) as gross_margin
@@ -2258,7 +2258,7 @@ select * from( --new
   limit 100;
 
 
-
+--37
 select  i_item_id
        ,i_item_desc
        ,i_current_price
@@ -2275,7 +2275,7 @@ select  i_item_id
  limit 100;
 
 
-
+--38
 select  count(*) from (
     select distinct c_last_name, c_first_name, d_date
     from store_sales, date_dim, customer
@@ -2298,7 +2298,7 @@ select  count(*) from (
 limit 100;
 
 
-
+--39
 with inv as
 (select w_warehouse_name,w_warehouse_sk,i_item_sk,d_moy
        ,stdev,mean, case mean when 0 then null else stdev/mean end cov
@@ -2352,7 +2352,7 @@ order by inv1.w_warehouse_sk,inv1.i_item_sk,inv1.d_moy,inv1.mean,inv1.cov
 ;
 
 
-
+--40
 select  
    w_state
   ,i_item_id
@@ -2380,7 +2380,7 @@ select
 limit 100;
 
 
-
+--41
 select  distinct(i_product_name)
  from item i1
  where i_manufact_id between 738 and 738+40 
@@ -2432,7 +2432,7 @@ select  distinct(i_product_name)
  limit 100;
 
 
-
+--42
 select  dt.d_year
  	,item.i_category_id
  	,item.i_category
@@ -2454,7 +2454,7 @@ select  dt.d_year
 limit 100 ;
 
 
-
+--43
 select  s_store_name, s_store_id,
         sum(case when (d_day_name='Sunday') then ss_sales_price else null end) sun_sales,
         sum(case when (d_day_name='Monday') then ss_sales_price else null end) mon_sales,
@@ -2473,7 +2473,7 @@ select  s_store_name, s_store_id,
  limit 100;
 
 
-
+--44
 select  asceding.rnk, i1.i_product_name best_performing, i2.i_product_name worst_performing
 from(select *
      from (select item_sk,rank() over (order by rank_col asc) rnk
@@ -2508,7 +2508,7 @@ order by asceding.rnk
 limit 100;
 
 
-
+--45
 select  ca_zip, ca_city, sum(ws_sales_price)
  from web_sales, customer, customer_address, date_dim, item
  where ws_bill_customer_sk = c_customer_sk
@@ -2528,7 +2528,7 @@ select  ca_zip, ca_city, sum(ws_sales_price)
  limit 100;
 
 
-
+--46
 select  c_last_name
        ,c_first_name
        ,ca_city
@@ -2563,7 +2563,7 @@ select  c_last_name
   limit 100;
 
 
-
+--47
 with v1 as(
  select i_category, i_brand,
         s_store_name, s_company_name,
@@ -2614,7 +2614,7 @@ with v1 as(
  limit 100;
 
 
-
+--48
 select sum (ss_quantity)
  from store_sales, store, customer_demographics, customer_address, date_dim
  where s_store_sk = ss_store_sk
@@ -2681,7 +2681,7 @@ select sum (ss_quantity)
 ;
 
 
-
+--49
 select  channel, item, return_ratio, return_rank, currency_rank from
  (select
  'web' as channel
@@ -2810,7 +2810,7 @@ select  channel, item, return_ratio, return_rank, currency_rank from
  limit 100;
 
 
-
+--50
 select  
    s_store_name
   ,s_company_id
@@ -2869,7 +2869,7 @@ order by s_store_name
 limit 100;
 
 
-
+--51
 WITH web_v1 as (
 select
   ws_item_sk item_sk, d_date,
@@ -2914,7 +2914,7 @@ order by item_sk
 limit 100;
 
 
-
+--52
 select  dt.d_year
  	,item.i_brand_id brand_id
  	,item.i_brand brand
@@ -2936,7 +2936,7 @@ select  dt.d_year
 limit 100 ;
 
 
-
+--53
 select  * from 
 (select i_manufact_id,
 sum(ss_sales_price) sum_sales,
@@ -2964,7 +2964,7 @@ order by avg_quarterly_sales,
 limit 100;
 
 
-
+--54
 with my_customers as (
  select distinct c_customer_sk
         , c_current_addr_sk
@@ -3020,7 +3020,7 @@ with my_customers as (
  limit 100;
 
 
-
+--55
 select  i_brand_id brand_id, i_brand brand,
  	sum(ss_ext_sales_price) ext_price
  from date_dim, store_sales, item
@@ -3034,7 +3034,7 @@ select  i_brand_id brand_id, i_brand brand,
 limit 100 ;
 
 
-
+--56
 with ss as (
  select i_item_id,sum(ss_ext_sales_price) total_sales
  from
@@ -3103,7 +3103,7 @@ where i_color in ('slate','blanched','burnished'))
  limit 100;
 
 
-
+--57
 with v1 as(
  select i_category, i_brand,
         cc_name,
@@ -3151,7 +3151,7 @@ with v1 as(
  limit 100;
 
 
-
+--58
 with ss_items as
  (select i_item_id item_id
         ,sum(ss_ext_sales_price) ss_item_rev 
@@ -3216,7 +3216,7 @@ with ss_items as
  limit 100;
 
 
-
+--59
 with wss as 
  (select d_week_seq,
         ss_store_sk,
@@ -3260,7 +3260,7 @@ with wss as
 limit 100;
 
 
-
+--60
 with ss as (
  select
           i_item_id,sum(ss_ext_sales_price) total_sales
@@ -3338,7 +3338,7 @@ where i_category in ('Music'))
  limit 100;
 
 
-
+--61
 select  promotions,total,cast(promotions as decimal(15,4))/cast(total as decimal(15,4))*100
 from
   (select sum(ss_ext_sales_price) promotions
@@ -3382,7 +3382,7 @@ order by promotions, total
 limit 100;
 
 
-
+--62
 select  
    substr(w_warehouse_name,1,20)
   ,sm_type
@@ -3417,7 +3417,7 @@ order by substr(w_warehouse_name,1,20)
 limit 100;
 
 
-
+--63
 select  * 
 from (select i_manager_id
              ,sum(ss_sales_price) sum_sales
@@ -3446,7 +3446,7 @@ order by i_manager_id
 limit 100;
 
 
-
+--64
 with cs_ui as
  (select cs_item_sk
         ,sum(cs_ext_list_price) as sale,sum(cr_refunded_cash+cr_reversed_charge+cr_store_credit) as refund
@@ -3567,7 +3567,7 @@ order by cs1.product_name
        ,cs2.s1;
 
 
-
+--65
 select 
 	s_store_name,
 	i_item_desc,
@@ -3596,7 +3596,7 @@ select
 limit 100;
 
 
-
+--66
 select   
          w_warehouse_name
  	,w_warehouse_sq_ft
@@ -3816,7 +3816,7 @@ select
  limit 100;
 
 
-
+--67
 select  *
 from (select i_category
             ,i_class
@@ -3860,7 +3860,7 @@ order by i_category
 limit 100;
 
 
-
+--68
 select  c_last_name
        ,c_first_name
        ,ca_city
@@ -3902,7 +3902,7 @@ select  c_last_name
  limit 100;
 
 
-
+--69
 select  
   cd_gender,
   cd_marital_status,
@@ -3949,7 +3949,7 @@ select
  limit 100;
 
 
-
+--70
 select * from ( --new
   select  
     sum(ss_net_profit) as total_sum
@@ -3989,7 +3989,7 @@ select * from ( --new
  limit 100;
 
 
-
+--71
 select i_brand_id brand_id, i_brand brand,t_hour,t_minute,
  	sum(ext_price) ext_price
  from item, (select ws_ext_sales_price as ext_price, 
@@ -4029,7 +4029,7 @@ select i_brand_id brand_id, i_brand brand,t_hour,t_minute,
  ;
 
 
-
+--72
 select  i_item_desc
       ,w_warehouse_name
       ,d1.d_week_seq
@@ -4058,7 +4058,7 @@ order by total_cnt desc, i_item_desc, w_warehouse_name, d_week_seq
 limit 100;
 
 
-
+--73
 select c_last_name
        ,c_first_name
        ,c_salutation
@@ -4086,7 +4086,7 @@ select c_last_name
     order by cnt desc, c_last_name asc;
 
 
-
+--74
 with year_total as (
  select c_customer_id customer_id
        ,c_first_name customer_first_name
@@ -4147,7 +4147,7 @@ with year_total as (
 limit 100;
 
 
-
+--75
 WITH all_sales AS (
  SELECT d_year
        ,i_brand_id
@@ -4217,7 +4217,7 @@ WITH all_sales AS (
  limit 100;
 
 
-
+--76
 select  channel, col_name, d_year, d_qoy, i_category, COUNT(*) sales_cnt, SUM(ext_sales_price) sales_amt FROM (
         SELECT 'store' as channel, 'ss_store_sk' col_name, d_year, d_qoy, i_category, ss_ext_sales_price ext_sales_price
          FROM store_sales, item, date_dim
@@ -4241,7 +4241,7 @@ ORDER BY channel, col_name, d_year, d_qoy, i_category
 limit 100;
 
 
-
+--77
 with ss as
  (select s_store_sk,
          sum(ss_ext_sales_price) as sales,
@@ -4349,7 +4349,7 @@ with ss as
  limit 100;
 
 
-
+--78
 with ws as
   (select d_year AS ws_sold_year, ws_item_sk,
     ws_bill_customer_sk ws_customer_sk,
@@ -4407,7 +4407,7 @@ order by
 limit 100;
 
 
-
+--79
 select 
   c_last_name,c_first_name,substr(s_city,1,30),ss_ticket_number,amt,profit
   from
@@ -4430,7 +4430,7 @@ select
 limit 100;
 
 
-
+--80
 with ssr as
  (select  s_store_id as store_id,
           sum(ss_ext_sales_price) as sales,
@@ -4526,7 +4526,7 @@ group by web_site_id)
  limit 100;
 
 
-
+--81
 with customer_total_return as
  (select cr_returning_customer_sk as ctr_customer_sk
         ,ca_state as ctr_state, 
@@ -4557,7 +4557,7 @@ with customer_total_return as
  limit 100;
 
 
-
+--82
 select  i_item_id
        ,i_item_desc
        ,i_current_price
@@ -4574,7 +4574,7 @@ select  i_item_id
  limit 100;
 
 
-
+--83
 with sr_items as
  (select i_item_id item_id,
         sum(sr_return_quantity) sr_item_qty
@@ -4641,7 +4641,7 @@ with sr_items as
  limit 100;
 
 
-
+--84
 select  c_customer_id as customer_id
        , coalesce(c_last_name,'') || ', ' || coalesce(c_first_name,'') as customername
  from customer
@@ -4662,7 +4662,7 @@ select  c_customer_id as customer_id
  limit 100;
 
 
-
+--85
 select  substr(r_reason_desc,1,20)
        ,avg(ws_quantity)
        ,avg(wr_refunded_cash)
@@ -4746,7 +4746,7 @@ order by substr(r_reason_desc,1,20)
 limit 100;
 
 
-
+--86
 select * from ( --new
   select   
     sum(ws_net_paid) as total_sum
@@ -4774,7 +4774,7 @@ select * from ( --new
  limit 100;
 
 
-
+--87
 select count(*) 
 from ((select distinct c_last_name, c_first_name, d_date
        from store_sales, date_dim, customer
@@ -4797,7 +4797,7 @@ from ((select distinct c_last_name, c_first_name, d_date
 ;
 
 
-
+--88
 select  *
 from
  (select count(*) h8_30_to_9
@@ -4891,7 +4891,7 @@ from
 ;
 
 
-
+--89
 select  *
 from(
 select i_category, i_class, i_brand,
@@ -4919,7 +4919,7 @@ order by sum_sales - avg_monthly_sales, s_store_name
 limit 100;
 
 
-
+--90
 select  cast(amc as decimal(15,4))/cast(pmc as decimal(15,4)) am_pm_ratio
  from ( select count(*) amc
        from web_sales, household_demographics , time_dim, web_page
@@ -4941,7 +4941,7 @@ select  cast(amc as decimal(15,4))/cast(pmc as decimal(15,4)) am_pm_ratio
  limit 100;
 
 
-
+--91
 select  
         cc_call_center_id Call_Center,
         cc_name Call_Center_Name,
@@ -4972,7 +4972,7 @@ group by cc_call_center_id,cc_name,cc_manager,cd_marital_status,cd_education_sta
 order by sum(cr_net_loss) desc;
 
 
-
+--92
 select  
    sum(ws_ext_discount_amt)  as "Excess Discount Amount" 
 from 
@@ -5002,7 +5002,7 @@ order by sum(ws_ext_discount_amt)
 limit 100;
 
 
-
+--93
 select  ss_customer_sk
             ,sum(act_sales) sumsales
       from (select ss_item_sk
@@ -5020,7 +5020,7 @@ select  ss_customer_sk
 limit 100;
 
 
-
+--94
 select  
    count(distinct ws_order_number) as "order count"
   ,sum(ws_ext_ship_cost) as "total shipping cost"
@@ -5049,7 +5049,7 @@ order by count(distinct ws_order_number)
 limit 100;
 
 
-
+--95
 with ws_wh as
 (select ws1.ws_order_number,ws1.ws_warehouse_sk wh1,ws2.ws_warehouse_sk wh2
  from web_sales ws1,web_sales ws2
@@ -5081,7 +5081,7 @@ order by count(distinct ws_order_number)
 limit 100;
 
 
-
+--96
 select  count(*) 
 from store_sales
     ,household_demographics 
@@ -5097,7 +5097,7 @@ order by count(*)
 limit 100;
 
 
-
+--97
 with ssci as (
 select ss_customer_sk customer_sk
       ,ss_item_sk item_sk
@@ -5122,7 +5122,7 @@ from ssci full outer join csci on (ssci.customer_sk=csci.customer_sk
 limit 100;
 
 
-
+--98
 select i_item_id
       ,i_item_desc 
       ,i_category 
@@ -5155,7 +5155,7 @@ order by
         ,revenueratio;
 
 
-
+--99
 select  
    substr(w_warehouse_name,1,20)
   ,sm_type
