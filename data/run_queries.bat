@@ -5,7 +5,7 @@ REM export a password for use with the system (no quotes)
 SET PGHOST=localhost
 SET PGDATABASE=TPCDS_DB_OLD_ENCODING
 SET PGUSER=postgres
-SET PGPASSWORD=zaszaszas
+SET PGPASSWORD=
 
 REM define a counter
 SET /a counter = 0
